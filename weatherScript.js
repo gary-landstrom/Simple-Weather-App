@@ -8,9 +8,6 @@ document.getElementById('getWeatherBtn').addEventListener('click', () => {
         alert("Please enter a valid city name.");
         return;
     }
-
-    //TEST Git-push
-
     //Former url only worked with a city name. 
     //const fullURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
     
