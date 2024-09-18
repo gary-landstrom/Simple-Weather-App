@@ -89,7 +89,7 @@ input:hover {
     background-color: #e0b895;
     font-size: 0.8rem;
     color: white;
-    width: 18%;
+    width: 16%;
     max-width: 200px;
     height: auto;
 }
@@ -107,6 +107,10 @@ input:hover {
 
 .weatherBtn:active .btnText {
     opacity: 0;
+}
+
+.btnText {
+    font-size: 85%;
 }
 
 .btnText {
