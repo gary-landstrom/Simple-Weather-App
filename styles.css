@@ -83,7 +83,8 @@ input:hover {
 
 .weatherBtn {
     transition: width .3s ease;
-    padding: 6px 8px;
+    padding: 5px;
+    margin: 0 auto;
     border-radius: 10px;
     border: 1px;
     background-color: #e0b895;
@@ -93,6 +94,7 @@ input:hover {
     height: auto;
     max-width: 200px;
     height: auto;
+    position: relative;
 }
 
 .weatherBtn:hover {
