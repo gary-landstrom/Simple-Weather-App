@@ -9,7 +9,8 @@ document.getElementById('getWeatherBtn').addEventListener('click', () => {
         return;
     }
     
-    /*FIXME:: What does this do?*/
+    /*geoURL is initialized with the url based on the user input. If it is 5 digits then the first url is used
+    if the user enters a city name then the second url is invoked*/
     let geoURL;
     if(/^\d{5}$/.test(city)) {
         geoURL = `https://api.openweathermap.org/geo/1.0/zip?zip=${city},US&appid=${apiKey}`;
@@ -17,7 +18,7 @@ document.getElementById('getWeatherBtn').addEventListener('click', () => {
         geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
     }
 
-    //FIXME:: Fetch location data 
+    //FIXME:: Fetch location data and use it for another API call for weather conditions
     let weatherURL;
 
     fetch(geoURL)
@@ -56,14 +57,16 @@ document.getElementById('getWeatherBtn').addEventListener('click', () => {
                 //gets the icon code from the API
                 const iconCode = data.weather[0].icon;
                 //icon URL 
-                const iconURL = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
+                const iconURL = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
                 //src attribute of img is passed to the iconURL
                 document.getElementById('weatherIcon').src = iconURL;
 
                 //country code pull from the API
                 const country = data.sys.country;
+
                 //FIXME: Confirm the API returns the country code
                 console.log(data.sys.country);
+                
                 document.getElementById('country').textContent = country;
 
 
