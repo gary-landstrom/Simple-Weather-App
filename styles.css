@@ -204,8 +204,8 @@ input:hover {
         font-size: 1.2rem;
     }
 
-    .weatherInfo h2{
-        font-size: 100%;
+    .weatherInfo h2, .weatherInfo h3{
+        font-size: 95%;
 
     }
 
