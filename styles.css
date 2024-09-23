@@ -99,8 +99,7 @@ input:hover {
     align-items: baseline;
 }
 #country {
-    padding: 1rem .3rem;
-    font-size: 1.4rem;
+    padding: 0 .3rem;
     font-style: italic;
     font-weight: 800;
     font-family: 'Times New Roman', Times, serif;
@@ -122,6 +121,10 @@ input:hover {
     font-size: 2rem;
     font-style: italic;
     font-family: 'Times New Roman', Times, serif;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .weatherInfo h3 {
     word-wrap: break-word;
@@ -187,9 +190,14 @@ input:hover {
     cursor: default;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 350px) {
     #weatherBtn {
         width: 80%;
         font-size: 1.2rem;
+    }
+
+    .weatherInfo h2, .weatherInfo h3, .weatherInfo p {
+        font-size: 90%;
+
     }
 }
