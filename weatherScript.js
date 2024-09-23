@@ -1,6 +1,39 @@
 //Weather API config
-
 const apiKey = 'd6e0bbf2a0a81b03bf516dca28a54090';
+
+window.onload = () => {
+    const homeCity = localStorage.getItem('homeCity');
+
+    window.onload = ()=> {
+        if (!homeCity) {
+            homeCity = 'New York';
+        }
+        document.getElementById('cityIn').value = homeCity;
+        document.getElementById('getWeatherBtn').click();
+    }
+
+    if(homeCity){
+        document.getElementById('cityIn').value=homeCity;
+        document.getElementById('getWeatherBtn').click();
+    }
+};
+
+document.querySelector('.setHome').addEventListener('click', ()=> {
+    const city = document.getElementById('cityIn').value;
+    if(city){
+        localStorage.setItem('homeCity', city);
+        alert(`Home city set to ${city}`);
+    }else{
+        alert('Please enter a city or zip first.');
+    }
+});
+
+/*document.querySelector('.clearHomeBtn').addEventListener('click', ()=> {
+        localStorage.removeItem('homeCity');
+        alert('Home city was removed.');
+    });*/
+
+
 document.getElementById('getWeatherBtn').addEventListener('click', () => {
     const city = document.getElementById('cityIn').value;
 
@@ -18,21 +51,19 @@ document.getElementById('getWeatherBtn').addEventListener('click', () => {
         geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
     }
 
-    //FIXME:: Fetch location data and use it for another API call for weather conditions
-    let weatherURL;
-
     fetch(geoURL)
         .then(response => response.json())
         .then(locationData => {
-            if(locationData.length > 0 || locationData.lat) {
-                //extract lon and lat
+            if ((Array.isArray(locationData) && locationData.length > 0) || locationData.lat) {
                 let lon, lat;
-                if(Array.isArray(locationData)) {
+                if (Array.isArray(locationData) && locationData.length > 0) {
                     lat = locationData[0].lat;
                     lon = locationData[0].lon;
-                }else{
+                } else if (locationData.lat && locationData.lon) {
                     lat = locationData.lat;
                     lon = locationData.lon;
+                } else {
+                    throw new Error("Location not found.");
                 }
 
                 //fetch the weather data using the lon,lat collected
@@ -69,8 +100,7 @@ document.getElementById('getWeatherBtn').addEventListener('click', () => {
                 
                 document.getElementById('country').textContent = country;
 
-
-                document.getElementById('cityName').textContent = `${data.name}, `;
+                document.getElementById('cityName').textContent = data.name ? `${data.name}, ` : '';
                 document.getElementById('temperature').textContent = `Temperature: ${data.main.temp} °F`;
                 document.getElementById('description').textContent = `Weather: ${data.weather[0].description}`;
                 document.getElementById('humidity').textContent = `Humidity: ${data.main.humidity}%`;
