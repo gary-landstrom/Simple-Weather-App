@@ -211,7 +211,11 @@ input:hover {
 
     .container {
         margin: 3px 3px;
-        width: 20em;
+        width: 22em;
         height: auto;
+    }
+
+    #backImg {
+        width: 21.8em;
     }
 }
