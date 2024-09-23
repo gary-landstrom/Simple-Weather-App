@@ -198,7 +198,7 @@ input:hover {
     cursor: default;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 600px) {
     #weatherBtn {
         width: 100%;
         font-size: 1.2rem;
