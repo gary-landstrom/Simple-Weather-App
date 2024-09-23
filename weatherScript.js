@@ -4,6 +4,7 @@ const apiKey = 'd6e0bbf2a0a81b03bf516dca28a54090';
 window.onload = () => {
     const homeCity = localStorage.getItem('homeCity');
 
+    //FIXME:: Not displaying the default val***
     window.onload = ()=> {
         if (!homeCity) {
             homeCity = 'New York';

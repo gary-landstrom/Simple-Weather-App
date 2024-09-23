@@ -115,6 +115,7 @@ input:hover {
     top: 43%;
 }
 .weatherInfo h2 {
+    position: relative;
     color: #b1885f;
     padding-bottom: .3rem;
     font-size: 2rem;
@@ -122,6 +123,7 @@ input:hover {
     font-family: 'Times New Roman', Times, serif;
 }
 .weatherInfo h3 {
+    position: relative;
     color: #474747;
     padding-bottom: 5px;
     font-size: 1.3rem;
